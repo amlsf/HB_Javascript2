@@ -19,27 +19,32 @@
     <div class="container">
         <div class="house col-md-2">
             <h3>Gryffindor</h3>
-            <p><ul id="GryffindorNames">
+            <p><ul>
+            <li id="Gryffindor">There's no one in Gryffindor</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Hufflepuff</h3>
-            <p><ul id="HufflepuffNames">
+            <p><ul>
+            <li id="Hufflepuff">There's no one in Hufflepuff</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Ravenclaw</h3>
-            <p><ul id="RavenclawNames">
+            <p><ul>
+            <li id="Ravenclaw">There's no one in Ravenclaw</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Slytherin</h3>
-            <p><ul id="SlytherinNames">
+            <p><ul>
+            <li id="Slytherin">There's no one in Slytherin</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Dumbledore</h3>
-            <p><ul id="DumbledoreNames">
+            <p><ul>
+            <li id="Dumbledore">There's no one in Dumbledore</li>
             </ul></p>
         </div>
     </div>
@@ -63,40 +68,39 @@
         var studentObject = document.getElementById("student_count").value;
         // console.log("This is the object "+studentObject);
         if (studentObject) {
-            studentCount = studentCount + parseInt(studentObject);
+            studentCount += parseInt(studentObject);
         }
         // console.log("this is "+ studentCount);
         document.getElementById("count").innerHTML = studentCount;
-        document.getElementById("student_count").value = 0;
+/* TODO Why doesn't this work to reset input box to 0? Why can't reference variable - sthg about pointers? see var studentObject above  studentObject = 30; */
     });
     //console.log(studentCount);
-    var fullHouse = studentCount/5;
-    var houseDict = {"GryffindorNames": [],"HufflepuffNames": [],"RavenclawNames": [], "SlytherinNames": [], "DumbledoreNames": []};
-    var studentName = document.getElementById("student_name").value; 
+
+//Started adding more here
+    var fullHouse = studentCount/houseList.length;
+    var houseList = ["Gryffindor","Hufflepuff","Ravenclaw", "Slytherin", "Dumbledore"];
+    var houseStudentDict = {"Gryffindor":[], "Hufflepuff":[],"Ravenclaw":[],"Slytherin":[],"Dumbledore":[]};
     var sortButton = document.getElementById("sort_student");
 
-    function pickHouse() {
-        houseNumber = Math.random();
-        if (houseNumber <= .2){
-            return "GryffindorNames";
+    sortbutton.addEventListener('click',function(){
+        var studentName = document.getElementById("student_name").value;
+        for (i = 0; i < houseList.length; i++) {
+            randomHouse = houseList[i];
+            if houseStudentDict.randomHouse.length < fullHouse {
+                houseStudentDict.randomHouse.push(studentName);
+            }
+            else {
+                randomHouse = random.choice(houseList);
+                houseStudentDict[randomHouse].push(studentName);
+            }
         }
-        else if(houseNumber <= .4){
-            return "HufflepuffNames";
-        }
-        else if (houseNumber <= .6){
-            return "RavenclawNames";
-        }
-        else if (houseNumber <= .8){
-            return "SlytherinNames";
-        }
-        else{
-            return "DumbledoreNames";
-        }
-    };
-
-    button.addEventListener('click',function(){
-        
+        document.getElementById(randomHouse).innerHTML +=studentname;
+        studentCount -= 1 
+        document.getElementById("count").innerHTML = studentCount;        
     });
+
+    
+
 
     </script>
 
