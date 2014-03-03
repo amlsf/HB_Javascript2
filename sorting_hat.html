@@ -58,23 +58,23 @@
 
     <script type = "text/javascript">
     var studentCount = 0;
+    var fullHouse = 1;
     var button = document.getElementById("set_student_count");
     button.addEventListener('click', function(){
         var studentObject = document.getElementById("student_count").value;
         // console.log("This is the object "+studentObject);
         if (studentObject) {
             studentCount = studentCount + parseInt(studentObject);
+            fullHouse = studentCount/5;
+            console.log("I just changed fullHouse to "+fullHouse)
         }
         // console.log("this is "+ studentCount);
         document.getElementById("count").innerHTML = studentCount;
         document.getElementById("student_count").value = 0;
     });
     //console.log(studentCount);
-    var fullHouse = studentCount/5;
     var houseDict = {"GryffindorNames": [],"HufflepuffNames": [],"RavenclawNames": [], "SlytherinNames": [], "DumbledoreNames": []};
-    var studentName = document.getElementById("student_name").value; 
     var sortButton = document.getElementById("sort_student");
-
     function pickHouse() {
         houseNumber = Math.random();
         if (houseNumber <= .2){
@@ -95,6 +95,8 @@
     };
 
     sortButton.addEventListener('click',function(){
+        var studentName = document.getElementById("student_name").value; 
+        console.log(fullHouse)
         console.log("I started as a function");
         // assign randomly a house
         randomHouse = pickHouse(); 
@@ -107,15 +109,16 @@
                 console.log("I'm in the if statement")
                 houseDict[randomHouse].push(studentName);
                 console.log(studentName + " has been successfully added to " + randomHouse);
+                studentCount -= 1;
+                document.getElementById("count").innerHTML = studentCount;
                 breaker = false;
             } else {
                 randomHouse = pickHouse();
                 console.log("I'm in the else");
+
             }
         }
-        // append to dictionary list
         // modify the html to show up dynamically 
-        // decrement the counter 
     });
 
     </script>
