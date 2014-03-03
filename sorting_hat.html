@@ -94,8 +94,28 @@
         }
     };
 
-    button.addEventListener('click',function(){
-        
+    sortButton.addEventListener('click',function(){
+        console.log("I started as a function");
+        // assign randomly a house
+        randomHouse = pickHouse(); 
+        console.log("I picked a house " + randomHouse)
+        breaker = true;
+        // check house below max, if above, choose randomly another house
+        while (breaker === true) {
+            console.log("I started a while loop")
+            if (houseDict[randomHouse].length < fullHouse) {
+                console.log("I'm in the if statement")
+                houseDict[randomHouse].push(studentName);
+                console.log(studentName + " has been successfully added to " + randomHouse);
+                breaker = false;
+            } else {
+                randomHouse = pickHouse();
+                console.log("I'm in the else");
+            }
+        }
+        // append to dictionary list
+        // modify the html to show up dynamically 
+        // decrement the counter 
     });
 
     </script>
