@@ -105,7 +105,9 @@
         // check house below max, if above, choose randomly another house
         while (breaker === true) {
             console.log("I started a while loop")
-            if (houseDict[randomHouse].length < fullHouse) {
+            if (studentCounter === 0) {
+                breaker = false;
+            } else if(houseDict[randomHouse].length < fullHouse) {
                 console.log("I'm in the if statement")
                 houseDict[randomHouse].push(studentName);
                 console.log(studentName + " has been successfully added to " + randomHouse);
