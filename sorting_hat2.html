@@ -19,32 +19,32 @@
     <div class="container">
         <div class="house col-md-2">
             <h3>Gryffindor</h3>
-            <p><ul id="GryffindorNames">
-            <li>There's no one in Gryffindor</li>
+            <p><ul>
+            <li id="Gryffindor">There's no one in Gryffindor</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Hufflepuff</h3>
-            <p><ul id="HufflepuffNames">
-            <li>There's no one in Hufflepuff</li>
+            <p><ul>
+            <li id="Hufflepuff">There's no one in Hufflepuff</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Ravenclaw</h3>
-            <p><ul id="RavenclawNames">
-            <li>There's no one in Ravenclaw</li>
+            <p><ul>
+            <li id="Ravenclaw">There's no one in Ravenclaw</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Slytherin</h3>
-            <p><ul id="SlytherinNames">
-            <li>There's no one in Slytherin</li>
+            <p><ul>
+            <li id="Slytherin">There's no one in Slytherin</li>
             </ul></p>
         </div>
         <div class="house col-md-2">
             <h3>Dumbledore</h3>
-            <p><ul id="DumbledoreNames">
-            <li>There's no one in Dumbledore</li>
+            <p><ul>
+            <li id="Dumbledore">There's no one in Dumbledore</li>
             </ul></p>
         </div>
     </div>
@@ -68,21 +68,39 @@
         var studentObject = document.getElementById("student_count").value;
         // console.log("This is the object "+studentObject);
         if (studentObject) {
-            studentCount = studentCount + parseInt(studentObject);
+            studentCount += parseInt(studentObject);
         }
         // console.log("this is "+ studentCount);
         document.getElementById("count").innerHTML = studentCount;
-        document.getElementById("student_count").value = 0;
+/* TODO Why doesn't this work to reset input box to 0? Why can't reference variable - sthg about pointers? see var studentObject above  studentObject = 30; */
     });
     //console.log(studentCount);
-    var fullHouse = studentCount/5
-    var houseList = ["Gryffindor","Hufflepuff","Ravenclaw", "Slytherin", "Dumbledore"]
-    
-    var studentName = document.getElementById("student_name").value; 
+
+//Started adding more here
+    var fullHouse = studentCount/houseList.length;
+    var houseList = ["Gryffindor","Hufflepuff","Ravenclaw", "Slytherin", "Dumbledore"];
+    var houseStudentDict = {"Gryffindor":[], "Hufflepuff":[],"Ravenclaw":[],"Slytherin":[],"Dumbledore":[]};
     var sortButton = document.getElementById("sort_student");
-    button.addEventListener('click',function(){
-        
+
+    sortbutton.addEventListener('click',function(){
+        var studentName = document.getElementById("student_name").value;
+        for (i = 0; i < houseList.length; i++) {
+            randomHouse = houseList[i];
+            if houseStudentDict.randomHouse.length < fullHouse {
+                houseStudentDict.randomHouse.push(studentName);
+            }
+            else {
+                randomHouse = random.choice(houseList);
+                houseStudentDict[randomHouse].push(studentName);
+            }
+        }
+        document.getElementById(randomHouse).innerHTML +=studentname;
+        studentCount -= 1 
+        document.getElementById("count").innerHTML = studentCount;        
     });
+
+    
+
 
     </script>
 
