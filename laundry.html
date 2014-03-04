@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Laundry Timers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
@@ -38,6 +38,53 @@
             <td class="timer">0:03</td>
         </tr>
     </table>
+
+    <div class="form">
+        <input type="time" id="new_washer">
+        <button id="set_new_washer">Set new washer</button>
+        <div id="washer"></div>
+    </div>
+
+    <div class="form">
+        <input type="time" id="new_dryer">
+        <button id="set_new_dryer">Set new dryer</button>
+        <div id="dryer"></div>
+    </div>
+
+
+    <script type="text/javascript">
+
+    function decrementCounters() {
+        timers = document.getElementsByClassName('timer');
+        console.log(timers);
+        for(var i = 0; i < timers.length; i++){
+            timeList = timers[i].innerHTML.split(":");
+            console.log(timeList);
+            secondsLeft = parseInt(timeList[timeList.length-1]);
+            secondsLeft --;
+            console.log(secondsLeft);
+            if (secondsLeft >= 10) {
+                document.getElementsByClassName('timer')[i].innerHTML = timeList[0]+":"+secondsLeft;
+             } else if(secondsLeft >= 0) {
+                document.getElementsByClassName('timer')[i].innerHTML = timeList[0]+":0"+secondsLeft;
+             } else if(timeList[0]>0){
+                document.getElementsByClassName('timer')[i].innerHTML = timeList[0]-1+":59";
+             } else {
+                document.getElementsByClassName('timer')[i].innerHTML = "Take Laundry Out";
+             }
+
+
+        }
+    };
+
+    decrementCounters();
+
+
+    </script>
+
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
