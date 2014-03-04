@@ -1,0 +1,124 @@
+<!-- Nicks' Code Review Suggestions on how to build dict dynamically using class -->
+
+
+
+document.getElementsByClassName("house")
+[
+<div class=​"house col-md-2">​
+<h3>​Gryffindor​</h3>​
+<p>​</p>​
+<ul id=​"GryffindorNames">​
+            ​</ul>​
+<p>​</p>​
+</div>​
+, 
+<div class=​"house col-md-2">​
+<h3>​Hufflepuff​</h3>​
+<p>​</p>​
+<ul id=​"HufflepuffNames">​
+            ​</ul>​
+<p>​</p>​
+</div>​
+, 
+<div class=​"house col-md-2">​
+<h3>​Ravenclaw​</h3>​
+<p>​</p>​
+<ul id=​"RavenclawNames">​
+            ​</ul>​
+<p>​</p>​
+</div>​
+, 
+<div class=​"house col-md-2">​…​</div>​
+, 
+<div class=​"house col-md-2">​…​</div>​
+]
+
+
+
+housedivs = document.getElementsByClassName("house")
+[
+<div class=​"house col-md-2">​…​</div>​
+, 
+<div class=​"house col-md-2">​…​</div>​
+, 
+<div class=​"house col-md-2">​…​</div>​
+, 
+<div class=​"house col-md-2">​…​</div>​
+, 
+<div class=​"house col-md-2">​…​</div>​
+]
+
+
+
+
+house
+ReferenceError: house is not defined
+
+
+
+housedivs[0]
+<div class=​"house col-md-2">​
+<h3>​Gryffindor​</h3>​
+<p>​</p>​
+<ul id=​"GryffindorNames">​
+            ​</ul>​
+<p>​</p>​
+</div>​
+
+
+
+housedivs[0]
+<div class=​"house col-md-2">​…​</div>​
+
+
+
+housedivs[0].getElementByTagName('h3')
+TypeError: Object #<HTMLDivElement> has no method 'getElementByTagName'
+
+
+
+
+
+
+housedivs[0].getElementsByTagName('h3')
+[
+<h3>​Gryffindor​</h3>​
+]
+
+
+
+housedivs[0].getElementsByTagName('h3').innerHTML
+undefined
+
+
+
+housedivs[0].getElementsByTagName('h3')[0].innerHTML
+"Gryffindor"
+
+
+
+<!-- This is jquery -->
+$('.house h3')
+[
+<h3>​Gryffindor​</h3>​
+, 
+<h3>​Hufflepuff​</h3>​
+, 
+<h3>​Ravenclaw​</h3>​
+, 
+<h3>​Slytherin​</h3>​
+, 
+<h3>​Dumbledore​</h3>​
+]
+
+
+
+
+$('.house h3').innerHTML
+undefined
+
+
+
+
+$('.house h3')[0].innerHTML
+"Gryffindor"
